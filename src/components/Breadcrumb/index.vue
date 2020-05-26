@@ -60,7 +60,6 @@ export default {
           }
         }
       }
-      console.log("breadList----", breadList);
       if (paths.includes("form")) {
         let flag = false;
         for (let item of queryParams) {

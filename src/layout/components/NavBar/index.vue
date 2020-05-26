@@ -14,6 +14,7 @@
     </a-col>
     <a-col :xs="20" :sm="12" :md="12" :lg="12" :xl="12">
       <div class="right-panel">
+        <full-screen style="margin-right:15px;" @reload="reload"></full-screen>
         <a-icon
           class="right-panel-reload"
           type="sync"
@@ -70,7 +71,7 @@ export default {
       });
       setTimeout(() => {
         this.spining = false;
-      }, 1000);
+      }, 800);
     }
   }
 };
