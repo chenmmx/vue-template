@@ -27,7 +27,7 @@
             borderRadius: '5px'
           }"
         >
-          <router-view />
+          <router-view v-if="isRouterAlive" />
         </div>
       </a-layout-content>
       <a-layout-footer style="textAlign: center">
@@ -51,7 +51,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters("common", ["device", "collapse"])
+    ...mapGetters("common", ["device", "collapse", "isRouterAlive"])
   },
   watch: {
     device(val) {
