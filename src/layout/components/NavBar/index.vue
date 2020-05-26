@@ -12,7 +12,35 @@
         <breadcrumb v-show="device === 'desktop'"></breadcrumb>
       </div>
     </a-col>
-    <a-col :xs="20" :sm="12" :md="12" :lg="12" :xl="12"></a-col>
+    <a-col :xs="20" :sm="12" :md="12" :lg="12" :xl="12">
+      <div class="right-panel">
+        <a-icon
+          class="right-panel-reload"
+          type="sync"
+          :spin="spining"
+          @click="reload"
+        />
+        <a-dropdown>
+          <span style="cursor:pointer;">
+            <a-avatar
+              size="large"
+              style="margin-right:10px;"
+              src="https://chu1204505056.gitee.io/vue-admin-beautiful/static/img/user.20010688.gif"
+            ></a-avatar>
+            <span>admin</span>
+            <a-icon type="down" />
+          </span>
+          <a-menu slot="overlay">
+            <a-menu-item>
+              <a href="javascript:;">1st menu item</a>
+            </a-menu-item>
+            <a-menu-item>
+              <a href="javascript:;">2nd menu item</a>
+            </a-menu-item>
+          </a-menu>
+        </a-dropdown>
+      </div>
+    </a-col>
   </div>
 </template>
 
@@ -21,7 +49,9 @@ import { mapGetters } from "vuex";
 export default {
   name: "NavBar",
   data() {
-    return {};
+    return {
+      spining: false
+    };
   },
   computed: {
     ...mapGetters("common", ["collapse", "device"])
@@ -30,6 +60,17 @@ export default {
     // 展开-收起菜单
     handleCollapse() {
       this.$store.dispatch("common/TOGGLE_COLLAPSE");
+    },
+    // 重载页面
+    reload() {
+      this.spining = true;
+      this.$store.dispatch("common/HANDLE_RELOAD", false);
+      this.$nextTick(() => {
+        this.$store.dispatch("common/HANDLE_RELOAD", true);
+      });
+      setTimeout(() => {
+        this.spining = false;
+      }, 1000);
     }
   }
 };
@@ -37,17 +78,32 @@ export default {
 
 <style lang="less" scoped>
 .nav-bar-container {
-  padding: 0 10px;
+  padding: 0 20px;
   position: relative;
   height: 50px;
   overflow: hidden;
   user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   .left-panel {
     display: flex;
     align-items: center;
     justify-items: center;
     height: 50px;
     min-height: 50px;
+  }
+  .right-panel {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-end;
+    height: 50px;
+    .right-panel-reload {
+      font-size: 20px;
+      cursor: pointer;
+      margin-right: 15px;
+    }
   }
 }
 </style>
