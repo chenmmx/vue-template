@@ -17,7 +17,7 @@
           class="menu-item"
         >
           <div class="item-box">
-            <img :src="item.icon" alt="" /><span>{{ item.title }}</span>
+            <a-icon type="user" /><span>{{ item.title }}</span>
           </div>
         </a-menu-item>
         <sub-menu v-else :menu-info="item" :key="item.key" />
