@@ -28,7 +28,13 @@
             borderRadius: '5px'
           }"
         >
-          <router-view v-if="isRouterAlive" />
+          <transition mode="out-in" name="fade-transform">
+            <router-view
+              v-if="isRouterAlive"
+              :key="key"
+              style="min-height: 78vh;"
+            />
+          </transition>
         </div>
       </a-layout-content>
       <a-layout-footer style="textAlign: center">
@@ -52,7 +58,10 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters("common", ["device", "collapse", "isRouterAlive"])
+    ...mapGetters("common", ["device", "collapse", "isRouterAlive"]),
+    key() {
+      return this.$route.path;
+    }
   },
   watch: {
     device(val) {

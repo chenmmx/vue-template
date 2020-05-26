@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-const routes = [
+export const asyncRoutes = [
   {
     path: "/",
     name: "Layout",
@@ -31,7 +31,7 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes: asyncRoutes
 });
 
 export default router;
