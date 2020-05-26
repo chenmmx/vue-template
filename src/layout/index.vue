@@ -2,7 +2,7 @@
   <a-layout id="layout">
     <a-layout-sider
       breakpoint="lg"
-      collapsed-width="0"
+      :collapsed-width="device === 'mobile' ? 0 : 80"
       :collapsed="collapse"
       @collapse="onCollapse"
       @breakpoint="onBreakpoint"
