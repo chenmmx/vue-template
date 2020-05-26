@@ -3,6 +3,7 @@
     <a-layout-sider
       breakpoint="lg"
       collapsed-width="0"
+      :collapsed="collapse"
       @collapse="onCollapse"
       @breakpoint="onBreakpoint"
       :class="[device === 'mobile' ? 'layout-mobile' : 'layout-normal']"
@@ -38,7 +39,7 @@
 </template>
 <script>
 import { AppMenu, NavBar } from "./components";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import Media from "./mixin/Media";
 export default {
   name: "Layout",
@@ -59,8 +60,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions("common", ["TOGGLE_COLLAPSE"]),
     onCollapse(collapsed, type) {
       console.log(collapsed, type);
+      this.TOGGLE_COLLAPSE();
     },
     onBreakpoint(broken) {
       console.log(broken);
