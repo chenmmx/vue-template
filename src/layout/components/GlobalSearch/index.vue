@@ -63,6 +63,7 @@ export default {
   },
   computed: {
     ...mapGetters("common", ["menuList"]),
+    // 格式化menuList
     formatMenuList() {
       let list = [];
       for (let item of this.menuList) {
@@ -93,12 +94,15 @@ export default {
     }
   },
   methods: {
+    // 添加click事件
     addEventListener() {
       document.addEventListener("click", this.handleFunc);
     },
+    // 移出click时间
     removeEventListener() {
       document.removeEventListener("click", this.handleFunc);
     },
+    // 隐藏面板事件
     handleFunc(e) {
       if (
         e.target.className !== "search-panel" &&
@@ -110,11 +114,13 @@ export default {
         this.removeEventListener();
       }
     },
+    // Input Focus
     handleFocus() {
       this.showList = true;
       this.addEventListener();
       this.getSearchList(this.searchValue);
     },
+    // 搜索列表点击
     handleItemClick(key, title, hasChildren) {
       if (hasChildren) return;
       this.searchValue = title;
@@ -122,6 +128,7 @@ export default {
         this.$router.push(key);
       }
     },
+    // 获取搜索列表
     getSearchList(v) {
       this.loading = true;
       let searchList = this.formatMenuList.filter(
