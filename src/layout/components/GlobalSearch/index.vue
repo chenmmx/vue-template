@@ -118,7 +118,9 @@ export default {
     handleItemClick(key, title, hasChildren) {
       if (hasChildren) return;
       this.searchValue = title;
-      this.$router.push(key);
+      if (this.$route.path !== key) {
+        this.$router.push(key);
+      }
     },
     getSearchList(v) {
       this.loading = true;
