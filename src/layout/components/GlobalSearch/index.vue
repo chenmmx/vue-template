@@ -13,11 +13,11 @@
         <li
           v-for="item in searchList"
           :key="item.key"
-          :class="['list-item', item.hasChildren ? 'disabled' : '']"
-          @click="handleItemClick(item.key, item.title, item.hasChildren)"
+          :class="['list-item']"
+          @click="handleItemClick(item.key, item.title)"
         >
           <span class="parent-title" v-if="item.parentTitle"
-            >{{ item.parentTitle }} /
+            >{{ item.parentTitle }} >
           </span>
           <span>{{ item.title }}</span>
         </li>
@@ -67,27 +67,18 @@ export default {
     formatMenuList() {
       let list = [];
       for (let item of this.menuList) {
-        list.push(
-          item.children && item.children.length > 0
-            ? {
-                key: item.key,
-                title: item.title,
-                hasChildren: true
-              }
-            : {
-                key: item.key,
-                title: item.title,
-                hasChildren: false
-              }
-        );
         if (item.children && item.children.length > 0) {
           for (let item1 of item.children) {
             list.push({
               ...item1,
-              hasChildren: false,
               parentTitle: item.title
             });
           }
+        } else {
+          list.push({
+            key: item.key,
+            title: item.title
+          });
         }
       }
       return list;
@@ -116,13 +107,12 @@ export default {
     },
     // Input Focus
     handleFocus() {
-      this.showList = true;
+      // this.showList = true;
       this.addEventListener();
       this.getSearchList(this.searchValue);
     },
     // 搜索列表点击
-    handleItemClick(key, title, hasChildren) {
-      if (hasChildren) return;
+    handleItemClick(key, title) {
       this.searchValue = title;
       if (this.$route.path !== key) {
         this.$router.push(key);
@@ -130,16 +120,22 @@ export default {
     },
     // 获取搜索列表
     getSearchList(v) {
-      this.loading = true;
+      if (v.length > 0) {
+        setTimeout(() => {
+          this.showList = true;
+        }, 200);
+      } else {
+        this.showList = false;
+      }
+      // this.loading = true;
       let searchList = this.formatMenuList.filter(
         item =>
           item.title.includes(v) ||
           (item.parentTitle && item.parentTitle.includes(v))
       );
       setTimeout(() => {
-        this.loading = false;
         this.searchList = searchList;
-      }, 300);
+      }, 200);
     }
   }
 };
@@ -153,7 +149,7 @@ export default {
   .search-panel {
     opacity: 0;
     position: absolute;
-    top: 28px;
+    top: 32px;
     width: 183px;
     height: 0px;
     border-radius: 5px;
@@ -178,13 +174,13 @@ export default {
   }
   .show {
     opacity: 1;
-    top: 30px;
+    top: 33px;
     height: 120px;
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   .hide {
     opacity: 0;
-    top: 28px;
+    top: 32px;
     height: 0px;
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }

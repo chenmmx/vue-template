@@ -23,6 +23,16 @@ const list = [
         key: "/test/child",
         title: "子组件",
         select: true
+      },
+      {
+        key: "/test/child1",
+        title: "子组件1",
+        select: true
+      },
+      {
+        key: "/test/child2",
+        title: "子组件2",
+        select: true
       }
     ]
   }
