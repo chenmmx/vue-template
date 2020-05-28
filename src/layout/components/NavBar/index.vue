@@ -14,6 +14,10 @@
     </a-col>
     <a-col :xs="20" :sm="12" :md="12" :lg="12" :xl="12">
       <div class="right-panel">
+        <global-search
+          v-show="device === 'desktop'"
+          style="margin-right:15px;"
+        ></global-search>
         <full-screen style="margin-right:15px;" @reload="reload"></full-screen>
         <a-icon
           class="right-panel-reload"
@@ -46,9 +50,13 @@
 </template>
 
 <script>
+import GlobalSearch from "../GlobalSearch";
 import { mapGetters } from "vuex";
 export default {
   name: "NavBar",
+  components: {
+    GlobalSearch
+  },
   data() {
     return {
       spining: false
@@ -82,7 +90,7 @@ export default {
   padding: 0 20px;
   position: relative;
   height: 50px;
-  overflow: hidden;
+  overflow: visible;
   user-select: none;
   display: flex;
   justify-content: space-between;

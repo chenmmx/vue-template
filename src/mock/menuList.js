@@ -13,6 +13,18 @@ const list = [
     key: "/form",
     title: "表单",
     select: true
+  },
+  {
+    key: "/test",
+    title: "测试",
+    select: true,
+    children: [
+      {
+        key: "/test/child",
+        title: "子组件",
+        select: true
+      }
+    ]
   }
 ];
 
