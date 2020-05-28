@@ -45,7 +45,15 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("common", ["menuList"])
+    ...mapGetters("common", ["menuList"]),
+    rootSubmenuKeys() {
+      let keys = this.menuList.map(item => {
+        if (item.children && item.children.length > 0) {
+          return item.key;
+        }
+      });
+      return keys;
+    }
   },
   methods: {
     // 刷新页面展开选中菜单
@@ -60,7 +68,16 @@ export default {
     clickMenu({ key }) {
       this.$router.push(key);
     },
-    onOpenChange() {}
+    onOpenChange(openKeys) {
+      const latestOpenKey = openKeys.find(
+        key => this.openKeys.indexOf(key) === -1
+      );
+      if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+        this.openKeys = openKeys;
+      } else {
+        this.openKeys = latestOpenKey ? [latestOpenKey] : [];
+      }
+    }
   }
 };
 </script>
