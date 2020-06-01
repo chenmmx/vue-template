@@ -68,10 +68,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions("common", ["TOGGLE_COLLAPSE"]),
+    ...mapActions("common", ["toggleCollapse"]),
     onCollapse(collapsed, type) {
       console.log(collapsed, type);
-      this.TOGGLE_COLLAPSE();
+      this.toggleCollapse();
     },
     onBreakpoint(broken) {
       console.log(broken);
@@ -102,18 +102,21 @@ export default {
     height: 100%;
   }
   .app-main-container {
-    padding: 16px;
+    padding: 16px 0;
     background: #fff;
     border-radius: 5px;
     position: relative;
     width: 100%;
     overflow: hidden;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
   }
   .footer-copyright {
     min-height: 70px;
     line-height: 35px;
     color: rgba(0, 0, 0, 0.45);
     text-align: center;
+    background: #f8f8fa;
   }
 }
 </style>

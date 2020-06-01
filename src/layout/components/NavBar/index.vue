@@ -68,14 +68,14 @@ export default {
   methods: {
     // 展开-收起菜单
     handleCollapse() {
-      this.$store.dispatch("common/TOGGLE_COLLAPSE");
+      this.$store.dispatch("common/toggleCollapse");
     },
     // 重载页面
     reload() {
       this.spining = true;
-      this.$store.dispatch("common/HANDLE_RELOAD", false);
+      this.$store.dispatch("common/handleReload", false);
       this.$nextTick(() => {
-        this.$store.dispatch("common/HANDLE_RELOAD", true);
+        this.$store.dispatch("common/handleReload", true);
       });
       setTimeout(() => {
         this.spining = false;

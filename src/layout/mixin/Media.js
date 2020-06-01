@@ -12,7 +12,7 @@ export default {
     const isMobile = this.handleIsMobile();
     console.log("ismobile----", isMobile);
     if (isMobile) {
-      store.dispatch("common/TOGGLE_DEVICE", "mobile");
+      store.dispatch("common/toggleDevice", "mobile");
     }
   },
   methods: {
@@ -22,7 +22,7 @@ export default {
     handleResize() {
       if (!document.hidden) {
         const isMobile = this.handleIsMobile();
-        store.dispatch("common/TOGGLE_DEVICE", isMobile ? "mobile" : "desktop");
+        store.dispatch("common/toggleDevice", isMobile ? "mobile" : "desktop");
       }
     }
   }

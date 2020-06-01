@@ -36,7 +36,7 @@ export default {
   },
   mounted() {
     this.getDefautOpenKey();
-    this.$store.dispatch("common/GET_MENU_LIST");
+    this.$store.dispatch("common/getMenuList");
   },
   data() {
     return {

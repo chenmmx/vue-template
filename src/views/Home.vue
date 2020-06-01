@@ -135,11 +135,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-.home {
-  .card {
-    // min-height: 395px;
-    // height: 395px;
-  }
-}
-</style>
+<style lang="less" scoped></style>
