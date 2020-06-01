@@ -1,11 +1,7 @@
 <template>
   <div class="table">
     <public-top-bar></public-top-bar>
-    <a-table
-      :columns="columns"
-      :data-source="data"
-      :scroll="{ x: 900, y: 300 }"
-    >
+    <a-table :columns="columns" :data-source="data" :scroll="{ x: 900 }">
       <a slot="name" slot-scope="text">{{ text }}</a>
       <span slot="customTitle"><a-icon type="smile-o" /> Name</span>
       <span slot="tags" slot-scope="tags">
@@ -87,6 +83,46 @@ const data = [
   },
   {
     key: "3",
+    name: "Joe Black",
+    age: 32,
+    gender: "男",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"]
+  },
+  {
+    key: "4",
+    name: "Joe Black",
+    age: 32,
+    gender: "男",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"]
+  },
+  {
+    key: "5",
+    name: "Joe Black",
+    age: 32,
+    gender: "男",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"]
+  },
+  {
+    key: "6",
+    name: "Joe Black",
+    age: 32,
+    gender: "男",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"]
+  },
+  {
+    key: "7",
+    name: "Joe Black",
+    age: 32,
+    gender: "男",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"]
+  },
+  {
+    key: "8",
     name: "Joe Black",
     age: 32,
     gender: "男",

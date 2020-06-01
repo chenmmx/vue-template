@@ -69,6 +69,9 @@ export default {
     // 展开-收起菜单
     handleCollapse() {
       this.$store.dispatch("common/toggleCollapse");
+      if (this.device === "desktop") {
+        this.reload();
+      }
     },
     // 重载页面
     reload() {
