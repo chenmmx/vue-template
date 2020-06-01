@@ -37,10 +37,10 @@
           </span>
           <a-menu slot="overlay">
             <a-menu-item>
-              <a href="javascript:;">1st menu item</a>
+              <a href="javascript:;">注销</a>
             </a-menu-item>
             <a-menu-item>
-              <a href="javascript:;">2nd menu item</a>
+              <a href="javascript:;">个人信息</a>
             </a-menu-item>
           </a-menu>
         </a-dropdown>

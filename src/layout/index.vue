@@ -19,27 +19,26 @@
       >
         <nav-bar></nav-bar>
       </a-layout-header>
-      <a-layout-content :style="{ margin: '24px 16px 0', height: '100%' }">
-        <div
-          :style="{
-            padding: '24px',
-            background: '#fff',
-            minHeight: '360px',
-            borderRadius: '5px'
-          }"
-        >
+      <a-layout-content
+        :style="{
+          margin: '24px 16px 0',
+          minHeight: 'calc(100vh - 127px)',
+          overFlow: 'hidden'
+        }"
+      >
+        <section class="app-main-container">
           <transition mode="out-in" name="fade-transform">
             <router-view
               v-if="isRouterAlive"
               :key="key"
-              style="min-height: 78vh;"
+              style="min-height:78vh;"
             />
           </transition>
-        </div>
+        </section>
+        <a-layout-footer class="footer-copyright" style="textAlign: center">
+          Glasssix Web ©2020 Created by Frontend Group
+        </a-layout-footer>
       </a-layout-content>
-      <a-layout-footer style="textAlign: center">
-        Glasssix Web ©2020 Created by Frontend Group
-      </a-layout-footer>
     </a-layout>
   </a-layout>
 </template>
@@ -101,6 +100,20 @@ export default {
   .ant-layout-sider-zero-width {
     position: fixed;
     height: 100%;
+  }
+  .app-main-container {
+    padding: 24px;
+    background: #fff;
+    border-radius: 5px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  .footer-copyright {
+    min-height: 70px;
+    line-height: 35px;
+    color: rgba(0, 0, 0, 0.45);
+    text-align: center;
   }
 }
 </style>

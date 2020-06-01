@@ -31,7 +31,7 @@ const list = [
       },
       {
         key: "/test/child2",
-        title: "子组件2",
+        title: "公共空间管理啊啊",
         select: true
       }
     ]
