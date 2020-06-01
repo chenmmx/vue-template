@@ -102,7 +102,7 @@ export default {
     height: 100%;
   }
   .app-main-container {
-    padding: 16px 0;
+    padding: 16px;
     background: #fff;
     border-radius: 5px;
     position: relative;

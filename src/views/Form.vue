@@ -1,7 +1,7 @@
 <template>
   <div class="form" style="padding-top:80px;">
     <a-row :gutter="15" type="flex" justify="center">
-      <a-col :xs="23" :sm="23" :md="18" :lg="18" :xl="12">
+      <a-col :xs="24" :sm="24" :md="18" :lg="18" :xl="12">
         <a-form-model
           ref="form"
           :model="form"
