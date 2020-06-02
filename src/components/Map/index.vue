@@ -65,7 +65,7 @@ export default {
         });
         this.trackAni = new window.BMapGLLib.TrackAnimation(bmap, pl, {
           overallView: true, // 动画完成后自动调整视野到总览
-          tilt: 22, // 轨迹播放的角度，默认为55
+          tilt: 45, // 轨迹播放的角度，默认为55
           duration: 20000, // 动画持续时长，默认为10000，单位ms
           delay: 3000 // 动画开始的延迟，默认0，单位ms
         });
