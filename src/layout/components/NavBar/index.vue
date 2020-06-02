@@ -37,10 +37,10 @@
           </span>
           <a-menu slot="overlay">
             <a-menu-item>
-              <a href="javascript:;">1st menu item</a>
+              <a href="javascript:;">注销</a>
             </a-menu-item>
             <a-menu-item>
-              <a href="javascript:;">2nd menu item</a>
+              <a href="javascript:;">个人信息</a>
             </a-menu-item>
           </a-menu>
         </a-dropdown>
@@ -68,14 +68,17 @@ export default {
   methods: {
     // 展开-收起菜单
     handleCollapse() {
-      this.$store.dispatch("common/TOGGLE_COLLAPSE");
+      this.$store.dispatch("common/toggleCollapse");
+      if (this.device === "desktop") {
+        this.reload();
+      }
     },
     // 重载页面
     reload() {
       this.spining = true;
-      this.$store.dispatch("common/HANDLE_RELOAD", false);
+      this.$store.dispatch("common/handleReload", false);
       this.$nextTick(() => {
-        this.$store.dispatch("common/HANDLE_RELOAD", true);
+        this.$store.dispatch("common/handleReload", true);
       });
       setTimeout(() => {
         this.spining = false;
@@ -87,6 +90,7 @@ export default {
 
 <style lang="less" scoped>
 .nav-bar-container {
+  z-index: 1;
   padding: 0 20px;
   position: relative;
   height: 50px;

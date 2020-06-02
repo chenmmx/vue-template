@@ -16,16 +16,16 @@ const getters = {
 };
 
 const actions = {
-  TOGGLE_DEVICE({ commit }, data) {
+  toggleDevice({ commit }, data) {
     commit("TOGGLE_DEVICE", data);
   },
-  TOGGLE_COLLAPSE({ commit }) {
+  toggleCollapse({ commit }) {
     commit("TOGGLE_COLLAPSE");
   },
-  GET_MENU_LIST({ commit }, data = menuList) {
+  getMenuList({ commit }, data = menuList) {
     commit("GET_MENU_LIST", data);
   },
-  HANDLE_RELOAD({ commit }, data) {
+  handleReload({ commit }, data) {
     commit("HANDLE_RELOAD", data);
   }
 };

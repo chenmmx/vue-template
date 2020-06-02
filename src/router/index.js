@@ -23,6 +23,11 @@ export const asyncRoutes = [
         path: "/form",
         name: "Form",
         component: () => import("@/views/Form.vue")
+      },
+      {
+        path: "/map",
+        name: "Map",
+        component: () => import("@/views/Map.vue")
       }
     ]
   }

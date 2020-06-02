@@ -15,6 +15,11 @@ const list = [
     select: true
   },
   {
+    key: "/map",
+    title: "百度地图",
+    select: true
+  },
+  {
     key: "/test",
     title: "测试",
     select: true,
@@ -31,7 +36,7 @@ const list = [
       },
       {
         key: "/test/child2",
-        title: "子组件2",
+        title: "公共空间管理啊啊",
         select: true
       }
     ]
