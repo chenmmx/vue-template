@@ -157,6 +157,9 @@ export default {
     onSubmit() {
       console.log("submit!", this.form);
     }
+  },
+  beforeDestroy() {
+    console.log("beforeDestroy");
   }
 };
 </script>

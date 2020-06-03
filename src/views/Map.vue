@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <a-button type="primary" @click="start">开始</a-button>
+    <a-button type="primary" @click="start">开始轨迹</a-button>
     <div class="map">
       <Map ref="map" :dataSource="dataSource" :centerPoint="centerPoint"></Map>
     </div>
