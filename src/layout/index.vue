@@ -13,17 +13,19 @@
       <!-- Menu -->
       <app-menu />
     </a-layout-sider>
-    <a-layout>
+    <a-layout class="layout-main">
       <a-layout-header
         :style="{ background: '#fff', padding: 0, height: '50px' }"
       >
         <nav-bar></nav-bar>
       </a-layout-header>
       <a-layout-content
+        id="content"
         :style="{
           margin: '24px 16px 0',
           minHeight: 'calc(100vh - 127px)',
-          overFlow: 'hidden'
+          overFlow: 'hidden',
+          flex: 'none'
         }"
       >
         <section class="app-main-container">
@@ -38,6 +40,7 @@
         <a-layout-footer class="footer-copyright" style="textAlign: center">
           Glasssix Web ©2020 Created by Frontend Group
         </a-layout-footer>
+        <a-back-top :target="target" />
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -54,7 +57,9 @@ export default {
   },
   mixins: [Media],
   data() {
-    return {};
+    return {
+      target: () => document.querySelector(".layout-main")
+    };
   },
   computed: {
     ...mapGetters("common", ["device", "collapse", "isRouterAlive"]),
