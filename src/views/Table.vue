@@ -1,6 +1,11 @@
 <template>
   <div class="table">
-    <public-top-bar></public-top-bar>
+    <public-top-bar :topBarsBtns="topBarsBtns">
+      <template slot="advanced">
+        <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
+        <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
+      </template>
+    </public-top-bar>
     <a-table :columns="columns" :data-source="data" :scroll="{ x: 900 }">
       <a slot="name" slot-scope="text">{{ text }}</a>
       <span slot="customTitle"><a-icon type="smile-o" /> Name</span>
@@ -135,8 +140,28 @@ export default {
   data() {
     return {
       data,
-      columns
+      columns,
+      topBarsBtns: [
+        {
+          name: "新增",
+          type: "primary",
+          click: this.add
+        },
+        {
+          name: "编辑",
+          type: "primary",
+          click: this.edit
+        }
+      ]
     };
+  },
+  methods: {
+    add() {
+      console.log("add");
+    },
+    edit() {
+      console.log("edit");
+    }
   }
 };
 </script>
