@@ -28,25 +28,25 @@
         </a>
         <a-menu slot="overlay">
           <a-menu-item>
-            <a href="javascript:;">
+            <a href="javascript:;" @click="handleCloseOthers">
               <a-icon type="close-circle" />
-              全部关闭</a
+              关闭其他</a
             >
           </a-menu-item>
           <a-menu-item>
-            <a href="javascript:;">
+            <a href="javascript:;" @click="handleCloseLeft">
               <a-icon type="left-circle" />
               关闭左侧</a
             >
           </a-menu-item>
           <a-menu-item>
-            <a href="javascript:;">
+            <a href="javascript:;" @click="handleCloseRight">
               <a-icon type="right-circle" />
               关闭右侧</a
             >
           </a-menu-item>
           <a-menu-item>
-            <a href="javascript:;">
+            <a href="javascript:;" @click="handleCloseAll">
               <a-icon type="stop" />
               全部关闭</a
             >
@@ -88,6 +88,31 @@ export default {
     handleItemClose(e, { key }) {
       e.preventDefault();
       this.$store.dispatch("tagsBar/deleteCachedRoute", { that: this, key });
+    },
+    // 关闭全部
+    handleCloseAll() {
+      this.$store.dispatch("tagsBar/closeAll", this);
+    },
+    // 关闭其他
+    handleCloseOthers() {
+      this.$store.dispatch("tagsBar/closeOthers", {
+        that: this,
+        key: this.activeKey
+      });
+    },
+    // 关闭左侧
+    handleCloseLeft() {
+      this.$store.dispatch("tagsBar/closeLeft", {
+        that: this,
+        key: this.activeKey
+      });
+    },
+    // 关闭右侧
+    handleCloseRight() {
+      this.$store.dispatch("tagsBar/closeRight", {
+        that: this,
+        key: this.activeKey
+      });
     }
   }
 };
