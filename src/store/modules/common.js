@@ -5,6 +5,8 @@ const state = {
   collapse: false,
   // 路由重载
   isRouterAlive: true,
+  // 滚动条减去宽度
+  scrollWidth: 360,
   menuList: []
 };
 
@@ -12,21 +14,41 @@ const getters = {
   device: state => state.device,
   collapse: state => state.collapse,
   menuList: state => state.menuList,
-  isRouterAlive: state => state.isRouterAlive
+  isRouterAlive: state => state.isRouterAlive,
+  scrollWidth: state => state.scrollWidth
 };
 
 const actions = {
+  // 切换设备
   toggleDevice({ commit }, data) {
     commit("TOGGLE_DEVICE", data);
   },
   toggleCollapse({ commit }) {
     commit("TOGGLE_COLLAPSE");
   },
-  getMenuList({ commit }, data = menuList) {
-    commit("GET_MENU_LIST", data);
+  // 获取菜单列表
+  async getMenuList({ commit }, data) {
+    const { that, cb } = data;
+    const res = await new Promise((resolve, reject) => {
+      try {
+        setTimeout(() => {
+          resolve(menuList);
+        }, 1000);
+      } catch (error) {
+        reject(error);
+      }
+    });
+    that.$message.success("获取菜单成功");
+    commit("GET_MENU_LIST", res);
+    cb && cb();
   },
+  // 路由重载
   handleReload({ commit }, data) {
     commit("HANDLE_RELOAD", data);
+  },
+  // 修改滚动条减去宽度
+  changeScrollWidth({ commit }, width) {
+    commit("CHANGE_SCROLL_WIDTH", width);
   }
 };
 
@@ -42,6 +64,9 @@ const mutations = {
   },
   HANDLE_RELOAD(state, data) {
     state.isRouterAlive = data;
+  },
+  CHANGE_SCROLL_WIDTH(state, width) {
+    state.scrollWidth = width;
   }
 };
 

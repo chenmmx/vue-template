@@ -15,14 +15,21 @@
     </a-layout-sider>
     <a-layout class="layout-main">
       <a-layout-header
-        :style="{ background: '#fff', padding: 0, height: '50px' }"
+        :style="{
+          background: '#fff',
+          padding: 0,
+          height: `${headerHeight}px`,
+          width: `calc(100% - ${sliderWidth}px)`
+        }"
+        class="fixed-header"
       >
         <nav-bar></nav-bar>
+        <tags-view></tags-view>
       </a-layout-header>
       <a-layout-content
         id="content"
         :style="{
-          margin: '24px 16px 0',
+          margin: `${headerHeight + 24}px 16px 0`,
           minHeight: 'calc(100vh - 127px)',
           overFlow: 'hidden',
           flex: 'none'
@@ -30,11 +37,13 @@
       >
         <section class="app-main-container">
           <transition mode="out-in" name="fade-transform">
-            <router-view
-              v-if="isRouterAlive"
-              :key="key"
-              style="min-height:78vh;"
-            />
+            <keep-alive :include="cachedRoutes" :max="10">
+              <router-view
+                v-if="isRouterAlive"
+                :key="key"
+                style="min-height:78vh;"
+              />
+            </keep-alive>
           </transition>
         </section>
         <a-layout-footer class="footer-copyright" style="textAlign: center">
@@ -58,24 +67,40 @@ export default {
   mixins: [Media],
   data() {
     return {
-      target: () => document.querySelector(".layout-main")
+      target: () => document.querySelector(".layout-main"),
+      headerHeight: 100,
+      sliderWidth: 200
     };
   },
   computed: {
     ...mapGetters("common", ["device", "collapse", "isRouterAlive"]),
+    ...mapGetters("tagsBar", ["cachedRoutes"]),
     key() {
       return this.$route.path;
     }
   },
   watch: {
     device(val) {
-      console.log("device", val);
+      if (val === "mobile") {
+        this.sliderWidth = 0;
+      } else {
+        this.sliderWidth = 200;
+      }
+      this.$store.dispatch("common/changeScrollWidth", this.sliderWidth + 160);
+    },
+    collapse(v) {
+      if (this.device === "desktop") {
+        this.sliderWidth = v ? 80 : 200;
+        this.$store.dispatch(
+          "common/changeScrollWidth",
+          this.sliderWidth + 160
+        );
+      }
     }
   },
   methods: {
     ...mapActions("common", ["toggleCollapse"]),
-    onCollapse(collapsed, type) {
-      console.log(collapsed, type);
+    onCollapse() {
       this.toggleCollapse();
     },
     onBreakpoint(broken) {
@@ -88,14 +113,25 @@ export default {
 <style lang="less">
 #layout {
   height: 100%;
+  .fixed-header {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 101;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+    transition: all 0.2s;
+  }
   .layout-normal {
     height: 100%;
-    z-index: 10001;
+    z-index: 101;
+  }
+  .ant-layout-sider-zero-width-trigger-left {
+    top: 5px;
   }
   .layout-mobile {
     position: fixed;
     height: 100%;
-    z-index: 10001;
+    z-index: 102;
   }
   .logo {
     height: 32px;

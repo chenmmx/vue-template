@@ -36,7 +36,12 @@ export default {
   },
   mounted() {
     this.getDefautOpenKey();
-    this.$store.dispatch("common/getMenuList");
+    this.$store.dispatch("common/getMenuList", {
+      that: this,
+      cb: () => {
+        this.pushCurrentToTags(this.$route.path);
+      }
+    });
   },
   data() {
     return {
@@ -65,8 +70,49 @@ export default {
       }
       this.openKeys = ["/" + path];
     },
+    // 将当前菜单添加至tagsView
+    pushCurrentToTags(key) {
+      const item = this.getCurrenItem(key);
+      const name = this.getRouteName(key);
+      if (item && name) {
+        delete item.select;
+        this.$store.dispatch("tagsBar/addCachedRoute", { ...item, name });
+      }
+    },
+    // 菜单点击
     clickMenu({ key }) {
+      const item = this.getCurrenItem(key);
+      delete item.select;
+      const name = this.getRouteName(key);
+      this.$store.dispatch("tagsBar/addCachedRoute", { ...item, name });
       this.$router.push(key);
+    },
+    // 获取当前选择菜单路由名称
+    getRouteName(path) {
+      const pathList = path
+        .split("/")
+        .filter(v => v)
+        .map(v => v.slice(0, 1).toUpperCase() + v.slice(1));
+      return pathList.join("");
+    },
+    // 获取当前选择菜单item
+    getCurrenItem(key) {
+      const menuList = JSON.parse(JSON.stringify(this.menuList));
+      let res = null;
+      for (let item of menuList) {
+        if (item.key === key) {
+          res = item;
+          return res;
+        }
+        if (item.children) {
+          for (let item1 of item.children) {
+            if (item1.key === key) {
+              res = item;
+              return res;
+            }
+          }
+        }
+      }
     },
     onOpenChange(openKeys) {
       const latestOpenKey = openKeys.find(

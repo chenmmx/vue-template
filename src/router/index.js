@@ -20,6 +20,11 @@ export const asyncRoutes = [
         component: () => import("@/views/Table.vue")
       },
       {
+        path: "/table/form",
+        name: "TableAddForm",
+        component: () => import("@/views/Add.vue")
+      },
+      {
         path: "/form",
         name: "Form",
         component: () => import("@/views/Form.vue")

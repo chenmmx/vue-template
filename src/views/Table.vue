@@ -158,6 +158,7 @@ export default {
   methods: {
     add() {
       console.log("add");
+      this.$router.push("/table/form");
     },
     edit() {
       console.log("edit");
