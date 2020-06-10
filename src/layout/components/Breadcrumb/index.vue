@@ -14,7 +14,9 @@ import { mapGetters } from "vuex";
 export default {
   name: "Breadcrumb",
   mounted() {
-    this.getCurrenBread(this.$route.path);
+    setTimeout(() => {
+      this.getCurrenBread(this.$route.path);
+    }, 1000);
   },
   data() {
     return {
@@ -30,13 +32,29 @@ export default {
     }
   },
   methods: {
+    // 获取当前面包屑
     getCurrenBread(path) {
-      const paths = path.split("/").filter(v => v);
-      const queryParams = ["id", "sn"];
+      path = path || "";
+      let paths = path.split("/");
       let breadList = [];
+      if (paths.includes("form")) {
+        path = paths.slice(0, paths.length - 1).join("/");
+        let flag = !!Object.keys(this.$route.query).length;
+        if (flag) {
+          breadList.push({
+            key: path,
+            title: "编辑"
+          });
+        } else {
+          breadList.push({
+            key: path,
+            title: "新增"
+          });
+        }
+      }
       for (let item of this.menuList) {
         if (item.key === path) {
-          breadList.push({
+          breadList.unshift({
             path: item.key,
             title: item.title
           });
@@ -45,7 +63,7 @@ export default {
         if (item.children) {
           for (let item1 of item.children) {
             if (item1.key === path) {
-              breadList.push(
+              breadList.unshift(
                 {
                   path: item.key,
                   title: item.title
@@ -58,25 +76,6 @@ export default {
               break;
             }
           }
-        }
-      }
-      if (paths.includes("form")) {
-        let flag = false;
-        for (let item of queryParams) {
-          if (this.$route.query[item]) {
-            flag = true;
-          }
-        }
-        if (flag) {
-          breadList.push({
-            key: path,
-            title: "编辑"
-          });
-        } else {
-          breadList.push({
-            key: path,
-            title: "新增"
-          });
         }
       }
       this.breadList = breadList;

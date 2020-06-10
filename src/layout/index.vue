@@ -55,14 +55,15 @@
   </a-layout>
 </template>
 <script>
-import { AppMenu, NavBar } from "./components";
+import { AppMenu, NavBar, TagsView } from "./components";
 import { mapGetters, mapActions } from "vuex";
 import Media from "./mixin/Media";
 export default {
   name: "Layout",
   components: {
     AppMenu,
-    NavBar
+    NavBar,
+    TagsView
   },
   mixins: [Media],
   data() {

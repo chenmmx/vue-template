@@ -51,11 +51,15 @@
 
 <script>
 import GlobalSearch from "../GlobalSearch";
+import Breadcrumb from "../Breadcrumb";
+import FullScreen from "../FullScreen";
 import { mapGetters } from "vuex";
 export default {
   name: "NavBar",
   components: {
-    GlobalSearch
+    GlobalSearch,
+    Breadcrumb,
+    FullScreen
   },
   data() {
     return {
