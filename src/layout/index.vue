@@ -30,7 +30,6 @@
         id="content"
         :style="{
           margin: `${headerHeight + 24}px 16px 0`,
-          minHeight: 'calc(100vh - 127px)',
           overFlow: 'hidden',
           flex: 'none'
         }"
@@ -41,7 +40,7 @@
               <router-view
                 v-if="isRouterAlive"
                 :key="key"
-                style="min-height:78vh;"
+                style="min-height:calc(100vh - 187px);"
               />
             </keep-alive>
           </transition>

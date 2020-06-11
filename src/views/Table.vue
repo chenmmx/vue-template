@@ -133,6 +133,22 @@ const data = [
     gender: "男",
     address: "Sidney No. 1 Lake Park",
     tags: ["cool", "teacher"]
+  },
+  {
+    key: "9",
+    name: "Joe Black",
+    age: 32,
+    gender: "男",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"]
+  },
+  {
+    key: "10",
+    name: "Joe Black",
+    age: 32,
+    gender: "男",
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"]
   }
 ];
 export default {
