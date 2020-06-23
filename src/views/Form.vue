@@ -71,6 +71,18 @@
               返回
             </a-button>
           </a-form-model-item>
+          <a-form-item
+            label="Upload"
+            extra="longgggggggggggggggggggggggggggggggggg"
+          >
+            <a-upload
+              :customRequest="fileUpload"
+              name="logo"
+              list-type="picture"
+            >
+              <a-button> <a-icon type="upload" /> Click to upload </a-button>
+            </a-upload>
+          </a-form-item>
         </a-form-model>
       </a-col>
     </a-row>
@@ -78,6 +90,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
+import file from "@/services/file.service.js";
 export default {
   name: "Form",
   data() {
@@ -154,6 +167,16 @@ export default {
     }
   },
   methods: {
+    async fileUpload(e) {
+      console.log(e.file);
+      const chunkSize = 40000000;
+      for (let start = 0; start < e.file.size; start += chunkSize) {
+        const chunk = e.file.slice(start, start + chunkSize + 1);
+        const fd = new FormData();
+        fd.append("img", chunk);
+        await file.fileUpload(fd);
+      }
+    },
     onSubmit() {
       console.log("submit!", this.form);
     }
