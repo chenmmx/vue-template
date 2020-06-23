@@ -1,5 +1,6 @@
 # 第六镜基础响应式人脸识别管理系统
-> 高校系统前端2.0版本 (基于Vue.js 2.x版本)
+
+> 高校系统前端 2.0 版本 (基于 Vue.js 2.x 版本)
 
 ## Feature
 
@@ -8,7 +9,6 @@
 - [x] 表单
 - [x] 高级表单
 - [x] 百度地图
-
 
 ## Technology Stack
 
@@ -22,15 +22,16 @@
 - [yarn](https://yarnpkg.com/zh-Hans/)
 - [echarts](https://echarts.apache.org/zh/index.html)
 - [v-charts](https://v-charts.js.org/#/)
-> 以上框架具体版本请参照package.json
+  > 以上框架具体版本请参照 package.json
 
 ## 安装说明
-- 安装依赖请使用yarn而不是npm
+
+- 安装依赖请使用 yarn 而不是 npm
 - 后台接口请在 vue.config.js 配置
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 yarn
 
@@ -41,11 +42,10 @@ yarn serve
 yarn run build
 ```
 
-
 ## Directory Description
 
 ```shell
-  # 挂载文件
+  # 挂载文件目录
   |- public
   # 打包文件
   |- /dist
@@ -71,6 +71,8 @@ yarn run build
     |- /services
     # 数据管理目录
     |- /store
+    # 全局样式目录
+    |- /styles
     # 工具目录
     |- /utils
     # 页面目录
