@@ -80,13 +80,19 @@ export default {
     }
   },
   watch: {
-    device(val) {
-      if (val === "mobile") {
-        this.sliderWidth = 0;
-      } else {
-        this.sliderWidth = 200;
+    device: {
+      immediate: true,
+      handler: function(val) {
+        if (val === "mobile") {
+          this.sliderWidth = 0;
+        } else {
+          this.sliderWidth = 200;
+        }
+        this.$store.dispatch(
+          "common/changeScrollWidth",
+          this.sliderWidth + 160
+        );
       }
-      this.$store.dispatch("common/changeScrollWidth", this.sliderWidth + 160);
     },
     collapse(v) {
       if (this.device === "desktop") {
