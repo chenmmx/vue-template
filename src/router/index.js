@@ -5,9 +5,21 @@ Vue.use(VueRouter);
 
 export const asyncRoutes = [
   {
+    path: "*",
+    name: "404",
+    component: () => import("@/views/404.vue")
+  },
+  {
+    path: "/401",
+    name: "401",
+    component: () => import("@/views/401.vue")
+  },
+  /** Layout */
+  {
     path: "/",
     name: "Layout",
     component: () => import("@/layout/index.vue"),
+    redirect: "/home",
     children: [
       {
         path: "/home",

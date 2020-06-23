@@ -80,7 +80,10 @@ const mutations = {
   },
   CLOSE_OTHERS(state, { that, key }) {
     const current = state.tagsBar.filter(v => v.key === key);
-    state.tagsBar = [defaultCachedRoute].concat(current);
+    state.tagsBar =
+      defaultCachedRoute.key === key
+        ? [defaultCachedRoute]
+        : [defaultCachedRoute].concat(current);
     that.$store.dispatch("tagsBar/getCachedNames");
   },
   CLOSE_LEFT(state, { that, key }) {

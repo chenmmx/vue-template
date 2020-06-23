@@ -30,7 +30,6 @@
         id="content"
         :style="{
           margin: `${headerHeight + 24}px 16px 0`,
-          minHeight: 'calc(100vh - 127px)',
           overFlow: 'hidden',
           flex: 'none'
         }"
@@ -41,13 +40,13 @@
               <router-view
                 v-if="isRouterAlive"
                 :key="key"
-                style="min-height:78vh;"
+                style="min-height:calc(100vh - 187px);"
               />
             </keep-alive>
           </transition>
         </section>
         <a-layout-footer class="footer-copyright" style="textAlign: center">
-          Glasssix Web ©2020 Created by Frontend Group
+          Glasssix Web ©2020 Created by Glasssix Frontend Group
         </a-layout-footer>
         <a-back-top :target="target" />
       </a-layout-content>
