@@ -15,6 +15,11 @@ const list = [
     select: true
   },
   {
+    key: "/infoForm",
+    title: "高级表单",
+    select: true
+  },
+  {
     key: "/map",
     title: "百度地图",
     select: true

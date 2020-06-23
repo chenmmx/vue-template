@@ -93,6 +93,7 @@ export default {
         .split("/")
         .filter(v => v)
         .map(v => v.slice(0, 1).toUpperCase() + v.slice(1));
+      console.log(pathList);
       return pathList.join("");
     },
     // 获取当前选择菜单item
