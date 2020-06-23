@@ -23,6 +23,7 @@ const actions = {
   toggleDevice({ commit }, data) {
     commit("TOGGLE_DEVICE", data);
   },
+  // 切换left menu
   toggleCollapse({ commit }) {
     commit("TOGGLE_COLLAPSE");
   },
