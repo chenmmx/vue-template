@@ -57,6 +57,14 @@
               </a-form-model-item>
             </a-col>
           </a-row>
+          <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
+            <a-button type="primary">
+              新增
+            </a-button>
+            <a-button style="margin-left: 10px;">
+              返回
+            </a-button>
+          </a-form-model-item>
         </a-form-model>
       </a-col>
     </a-row>
