@@ -43,48 +43,16 @@
             </a-col>
           </a-row>
           <a-row :gutter="15">
-            <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-              <a-form-model-item label="Activity name" prop="name">
-                <a-input v-model="form.name" />
-              </a-form-model-item>
-            </a-col>
-            <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-              <a-form-model-item label="Activity name" prop="name">
-                <a-input v-model="form.name" />
-              </a-form-model-item>
-            </a-col>
-            <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-              <a-form-model-item label="Activity name" prop="name">
-                <a-input v-model="form.name" />
-              </a-form-model-item>
-            </a-col>
-            <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-              <a-form-model-item label="Activity name" prop="name">
-                <a-input v-model="form.name" />
-              </a-form-model-item>
-            </a-col>
-            <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-              <a-form-model-item label="Activity name" prop="name">
-                <a-input v-model="form.name" />
-              </a-form-model-item>
-            </a-col>
-            <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-              <a-form-model-item label="Activity name" prop="name">
-                <a-input v-model="form.name" />
-              </a-form-model-item>
-            </a-col>
-            <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-              <a-form-model-item label="Activity name" prop="name">
-                <a-input v-model="form.name" />
-              </a-form-model-item>
-            </a-col>
-            <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-              <a-form-model-item label="Activity name" prop="name">
-                <a-input v-model="form.name" />
-              </a-form-model-item>
-            </a-col>
-            <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-              <a-form-model-item label="Activity name" prop="name">
+            <a-col
+              :xs="24"
+              :sm="24"
+              :md="12"
+              :lg="12"
+              :xl="12"
+              v-for="item in 9"
+              :key="item"
+            >
+              <a-form-model-item :label="`Activity name${item}`" prop="name">
                 <a-input v-model="form.name" />
               </a-form-model-item>
             </a-col>
