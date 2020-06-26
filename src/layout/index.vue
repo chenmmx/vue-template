@@ -119,6 +119,11 @@ export default {
 <style lang="less">
 #layout {
   height: 100%;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
   .fixed-header {
     position: fixed;
     right: 0;
