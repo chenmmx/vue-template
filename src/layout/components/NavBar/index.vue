@@ -30,7 +30,7 @@
             <a-avatar
               size="large"
               style="margin-right:10px;"
-              src="https://chu1204505056.gitee.io/vue-admin-beautiful/static/img/user.20010688.gif"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSTdPH0SndptUa9M7jY9LjpPBm71NNf87GDgA&usqp=CAU"
             ></a-avatar>
             <span>admin</span>
             <a-icon type="down" />
