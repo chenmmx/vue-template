@@ -224,14 +224,14 @@ export default {
     // changePageIndex
     changePageIndex(page) {
       this.tableInfo.pageIndex = page;
-      this.getTableData(this.tableServices);
+      // this.getTableData(this.tableServices);
     },
 
     // changePageSize
     changePageSize(current, pageSize) {
       this.tableInfo.pageIndex = 1;
       this.tableInfo.pageSize = pageSize;
-      this.getTableData(this.tableServices);
+      // this.getTableData(this.tableServices);
     },
     handleShowTree() {
       this.isShowTree = !this.isShowTree;
