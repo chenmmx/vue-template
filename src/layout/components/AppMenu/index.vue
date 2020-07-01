@@ -1,6 +1,6 @@
 <template>
   <div
-    style="padding-top:40px;border-radius:0px 10px 0px 0px;background:#001529;height:100%;"
+    style="padding-top:40px;border-radius:0px 10px 0px 0px;background:#001529;height:calc(100% - 60px);"
   >
     <a-menu
       mode="inline"

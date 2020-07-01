@@ -31,11 +31,6 @@
           /> -->
           <a-dropdown>
             <span style="cursor:pointer;">
-              <!-- <img
-                size="large"
-                style="margin-right:10px;"
-                src="../../assets/header.jpeg"
-              ><img> -->
               <span class="header-name">glasssix</span>
               <img class="header-img" src="@/assets/header.jpeg" alt="" />
               <a-icon type="down" />
