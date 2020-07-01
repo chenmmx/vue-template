@@ -36,7 +36,7 @@
                 style="margin-right:10px;"
                 src="../../assets/header.jpeg"
               ><img> -->
-              <span>admin</span>
+              <span class="header-name">admin</span>
               <img class="header-img" src="@/assets/header.jpeg" alt="" />
               <a-icon type="down" />
             </span>
@@ -129,11 +129,21 @@ export default {
       cursor: pointer;
       margin-right: 15px;
     }
+    .anticon-down {
+      display: none;
+    }
+    .header-name {
+      color: #333333;
+      font-weight: bold;
+      font-family: MicrosoftYaHei;
+    }
     .header-img {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      margin: 0 5px;
+      margin-left: 10px;
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+      border: 2px solid rgba(255, 255, 255, 1);
     }
   }
 }
