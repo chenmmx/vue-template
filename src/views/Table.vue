@@ -1,5 +1,8 @@
 <template>
   <div class="table">
+    <public-header>
+      缺勤记录
+    </public-header>
     <public-top-bar :topBarsBtns="topBarsBtns">
       <template slot="advanced">
         <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
