@@ -29,20 +29,16 @@
                 >搜索</a-button
               >
             </div>
-            <div
-              class="btn-group"
-              v-for="(item, idx) in topBarsBtns"
-              :key="item.name"
-            >
-              <a-button
-                class="btn"
-                :type="idx === 0 ? 'primary' : null"
-                @click="item.click && item.click()"
-                >{{ item.name }}</a-button
-              >
+            <div class="btn-group" v-for="item in topBarsBtns" :key="item.name">
+              <a-button class="btn" @click="item.click && item.click()">{{
+                item.name
+              }}</a-button>
             </div>
-            <a-button class="btn" @click="isAdvancedSearch = !isAdvancedSearch"
-              >高级搜索</a-button
+            <a-button
+              class="btn"
+              @click="isAdvancedSearch = !isAdvancedSearch"
+              :type="isAdvancedSearch ? 'primary' : null"
+              >{{ isAdvancedSearch ? "收起" : "高级搜索" }}</a-button
             >
           </a-col>
         </a-row>
@@ -96,6 +92,7 @@ export default {
       moment,
       // 是否显示高级搜索
       isAdvancedSearch: false,
+      highSearchText: "高级搜索",
       // 默认展示的搜索类别
       searchKey: "",
       searchValue: ""
