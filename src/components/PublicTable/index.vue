@@ -141,7 +141,6 @@ export default {
         });
       }
       this.customRenderList = this.tableColumns.filter(v => v.custom);
-      console.log(this.customRenderList);
     }
   }
 };
