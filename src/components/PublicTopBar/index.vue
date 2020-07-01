@@ -3,7 +3,7 @@
     <a-row :gutter="15">
       <a-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18" class="panel-left">
         <a-row :gutter="15" style="width:100%;">
-          <a-col :xs="24" :sm="24" :md="10" :lg="10" :xl="10">
+          <a-col :xs="24" :sm="24" :md="24" :lg="10" :xl="10">
             <a-input-group compact style="display:flex;">
               <a-select v-if="searchList" v-model="searchKey">
                 <a-select-option
@@ -23,7 +23,7 @@
               />
             </a-input-group>
           </a-col>
-          <a-col :xs="24" :sm="24" :md="14" :lg="14" :xl="14">
+          <a-col :xs="24" :sm="24" :md="24" :lg="14" :xl="14">
             <div class="btn-group">
               <a-button class="btn" type="primary" @click="onSearch"
                 >搜索</a-button
