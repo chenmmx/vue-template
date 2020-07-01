@@ -230,7 +230,7 @@ export default {
         font-size: 32px;
         font-weight: bold;
         line-height: 40px;
-        color: #5862cb;
+        color: #2c8cec;
         opacity: 0;
         animation-name: slideUp;
         animation-duration: 0.5s;
@@ -254,7 +254,7 @@ export default {
         margin-bottom: 30px;
         font-size: 13px;
         line-height: 21px;
-        color: #5862cb;
+        color: #2c8cec;
         opacity: 0;
         animation-name: slideUp;
         animation-duration: 0.5s;
@@ -272,7 +272,7 @@ export default {
         color: #fff;
         text-align: center;
         cursor: pointer;
-        background: #5862cb;
+        background: #2c8cec;
         border-radius: 100px;
         opacity: 0;
         animation-name: slideUp;

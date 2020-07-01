@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div
+    style="padding-top:40px;border-radius:0px 10px 0px 0px;background:#001529;height:100%;"
+  >
     <a-menu
       mode="inline"
       theme="dark"

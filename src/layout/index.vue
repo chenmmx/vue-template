@@ -9,14 +9,20 @@
       :class="[device === 'mobile' ? 'layout-mobile' : 'layout-normal']"
     >
       <!-- LOGO -->
-      <div class="logo" />
+      <div class="logo">
+        <img
+          src="@/assets/sliderBar/logo.png"
+          style="width:104px;height:14px;"
+          alt=""
+        />
+      </div>
       <!-- Menu -->
       <app-menu />
     </a-layout-sider>
     <a-layout class="layout-main">
       <a-layout-header
         :style="{
-          background: '#fff',
+          background: '#F7F8FA',
           padding: 0,
           height: `${headerHeight}px`,
           width: `calc(100% - ${sliderWidth}px)`
@@ -24,12 +30,12 @@
         class="fixed-header"
       >
         <nav-bar></nav-bar>
-        <tags-view></tags-view>
+        <!-- <tags-view></tags-view> -->
       </a-layout-header>
       <a-layout-content
         id="content"
         :style="{
-          margin: `${headerHeight + 24}px 16px 0`,
+          margin: `${headerHeight + 10}px 16px 0`,
           overFlow: 'hidden',
           flex: 'none'
         }"
@@ -54,21 +60,21 @@
   </a-layout>
 </template>
 <script>
-import { AppMenu, NavBar, TagsView } from "./components";
+import { AppMenu, NavBar } from "./components";
 import { mapGetters, mapActions } from "vuex";
 import Media from "./mixin/Media";
 export default {
   name: "Layout",
   components: {
     AppMenu,
-    NavBar,
-    TagsView
+    NavBar
+    // TagsView
   },
   mixins: [Media],
   data() {
     return {
       target: () => document.querySelector(".layout-main"),
-      headerHeight: 100,
+      headerHeight: 50,
       sliderWidth: 200
     };
   },
@@ -124,12 +130,15 @@ export default {
   }
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
+  .ant-layout-sider {
+    background-color: #fff;
+  }
   .fixed-header {
     position: fixed;
     right: 0;
     top: 0;
     z-index: 101;
-    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+    // box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
     transition: all 0.2s;
   }
   .layout-normal {
@@ -137,7 +146,7 @@ export default {
     z-index: 101;
   }
   .ant-layout-sider-zero-width-trigger-left {
-    top: 5px;
+    top: 103px;
   }
   .layout-mobile {
     position: fixed;
@@ -145,9 +154,11 @@ export default {
     z-index: 102;
   }
   .logo {
-    height: 32px;
-    background: rgba(255, 255, 255, 0.2);
-    margin: 16px;
+    height: 60px;
+    line-height: 52px;
+    text-align: center;
+    background: #f7f8fa;
+    // margin: 16px;
   }
   .ant-layout-sider-zero-width {
     position: fixed;

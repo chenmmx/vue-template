@@ -1,7 +1,7 @@
 <template>
   <div class="tags-view">
     <div class="left-group">
-      <a-icon style="margin-right:10px;cursor:pointer;" type="double-left" />
+      <!-- <a-icon style="margin-right:10px;cursor:pointer;" type="double-left" /> -->
       <transition-group
         name="list"
         tag="p"
@@ -9,7 +9,8 @@
         :style="{ width: `calc(100vw - ${scrollWidth}px)` }"
       >
         <a-tag
-          :color="activeKey === item.key ? '#5862CB' : null"
+          style="margin-right:15px;"
+          :color="activeKey === item.key ? '#2C8CEC' : null"
           v-for="(item, idx) in tagsBar"
           :key="item.key"
           :closable="idx !== 0"
@@ -20,7 +21,7 @@
         </a-tag>
       </transition-group>
     </div>
-    <div class="right-group">
+    <!-- <div class="right-group">
       <a-icon style="margin-right:10px;cursor:pointer;" type="double-right" />
       <a-dropdown>
         <a class="ant-dropdown-link" @click="e => e.preventDefault()">
@@ -53,7 +54,7 @@
           </a-menu-item>
         </a-menu>
       </a-dropdown>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -122,8 +123,8 @@ export default {
 .tags-view {
   height: 50px;
   width: 100%;
-  background-color: #fff;
-  padding: 0 10px;
+  background-color: #f7f8fa;
+  padding-right: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
