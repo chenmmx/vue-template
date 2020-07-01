@@ -1,18 +1,20 @@
 <template>
   <div class="table">
-    <public-header>
-      缺勤记录
-    </public-header>
-    <public-top-bar :topBarsBtns="topBarsBtns">
+    <public-header>缺勤记录</public-header>
+    <public-top-bar
+      :topBarsBtns="topBarsBtns"
+      :search-list="searchList"
+      @search="handleSearch"
+    >
       <template slot="advanced">
         <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
         <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
       </template>
-      <template slot="panel-right">
+      <!-- <template slot="panel-right">
         <a-button type="primary" @click="handleShowTree">{{
           btnName
         }}</a-button>
-      </template>
+      </template> -->
     </public-top-bar>
     <public-table
       :columns="columns"
@@ -181,6 +183,16 @@ export default {
           click: this.edit
         }
       ],
+      searchList: [
+        {
+          key: "name",
+          value: "学生姓名"
+        },
+        {
+          key: "number",
+          value: "学生学号"
+        }
+      ],
       operate: [
         {
           name: "编辑",
@@ -240,6 +252,10 @@ export default {
     },
     handleMore(item, { key }) {
       console.log(key);
+    },
+    // 搜索
+    handleSearch({ key, value }) {
+      console.log(key, value);
     }
   }
 };
