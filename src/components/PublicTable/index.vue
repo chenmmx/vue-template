@@ -125,6 +125,7 @@ export default {
     getCustomRenderList() {
       this.tableColumns = this.columns.map(item => {
         if (item.custom) {
+          this.customRenderList.push(item);
           return {
             ...item,
             scopedSlots: { customRender: item.dataIndex }
@@ -140,7 +141,6 @@ export default {
           scopedSlots: { customRender: "action" }
         });
       }
-      this.customRenderList = this.tableColumns.filter(v => v.custom);
     }
   }
 };
