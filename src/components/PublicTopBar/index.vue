@@ -52,7 +52,7 @@
     </a-row>
     <a-row
       v-if="isAdvancedSearch"
-      style="padding:22px 0 12px;background:#F7F8FA;margin-bottom:20px;"
+      style="padding:22px 0 2px;background:#F7F8FA;margin-bottom:20px;"
     >
       <a-col
         :xs="24"
@@ -127,17 +127,17 @@ export default {
       justify-content: flex-start;
       // padding: 0 13px;
       & > span {
-        margin: 0 0 10px 10px;
+        margin: 0 0 20px 10px;
         min-width: 200px;
         width: 80%;
       }
       & > div {
-        margin: 0 0 10px 10px;
+        margin: 0 0 20px 10px;
         min-width: 200px;
         width: 80%;
       }
       & > input {
-        margin: 0 0 10px 10px;
+        margin: 0 0 20px 10px;
         min-width: 200px;
         width: 80%;
       }
