@@ -64,7 +64,7 @@ export default {
   height: 100%;
   background: rgba(250, 252, 252, 1);
   border-radius: 5px;
-  min-height: calc(100vh - 187px);
+  min-height: calc(100vh - 227px);
   overflow: hidden;
   /deep/ .ant-tree {
     line-height: 2;
