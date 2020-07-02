@@ -16,8 +16,36 @@
           @search="handleSearch"
         >
           <template slot="advanced">
-            <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
-            <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
+            <!-- <a-date-picker format="YYYY-MM-DD HH:mm:ss" /> -->
+            <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="8">
+              <p class="text">缺勤时间</p>
+              <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
+            </a-col>
+            <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="8">
+              <p class="text">缺勤时间</p>
+              <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
+            </a-col>
+            <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="8">
+              <p class="text">缺勤时间</p>
+              <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
+            </a-col>
+            <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="8">
+              <p class="text">缺勤时间</p>
+              <a-select default-value="lucy">
+                <a-select-option value="jack">
+                  Jack
+                </a-select-option>
+                <a-select-option value="lucy">
+                  Lucy
+                </a-select-option>
+                <a-select-option value="disabled" disabled>
+                  Disabled
+                </a-select-option>
+                <a-select-option value="Yiminghe">
+                  yiminghe
+                </a-select-option>
+              </a-select>
+            </a-col>
           </template>
         </public-top-bar>
       </template>

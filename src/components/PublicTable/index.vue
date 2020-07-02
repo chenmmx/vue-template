@@ -156,16 +156,22 @@ export default {
     padding: 24px;
     padding-top: 10px;
     display: flex;
-    .pagination {
+    /deep/ .pagination {
       margin-left: auto;
-      /deep/ .ant-pagination-item-link {
+      color: #b3b3b3;
+      .ant-pagination-item-link {
+        border-radius: 4px;
+        border: none;
+        color: #b3b3b3;
+      }
+      .ant-pagination-item {
         border-radius: 4px;
       }
-      /deep/ .ant-pagination-item {
-        border-radius: 4px;
-      }
-      /deep/ .ant-select-selection {
+      .ant-select-selection {
         border-radius: 13px;
+      }
+      .ant-pagination-disabled {
+        border: none;
       }
     }
   }
