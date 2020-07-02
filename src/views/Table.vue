@@ -1,50 +1,98 @@
 <template>
   <div class="table">
     <public-header>缺勤记录</public-header>
-    <public-top-bar
-      :topBarsBtns="topBarsBtns"
-      :search-list="searchList"
-      @search="handleSearch"
-    >
-      <template slot="advanced">
-        <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
-        <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
-      </template>
-      <!-- <template slot="panel-right">
-        <a-button type="primary" @click="handleShowTree">{{
-          btnName
-        }}</a-button>
-      </template> -->
-    </public-top-bar>
     <public-table
       :columns="columns"
       :data-source="data"
       :operate="operate"
       :tableInfo="tableInfo"
+      show-tree
     >
+      <!-- Top Bar -->
+      <template slot="top-bar">
+        <public-top-bar
+          :topBarsBtns="topBarsBtns"
+          :search-list="searchList"
+          @search="handleSearch"
+        >
+          <template slot="advanced">
+            <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
+            <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
+          </template>
+        </public-top-bar>
+      </template>
+      <!-- Tree -->
+      <public-tree
+        :tree-data="treeData"
+        show-custom
+        @select="handleTreeClick"
+        checkable
+      >
+        <template slot="custom">
+          <a-dropdown>
+            <a-icon type="dash" />
+            <a-menu slot="overlay">
+              <a-menu-item v-for="item in treeMenuList" :key="item.key">
+                <a href="javascript:;">{{ item.name }}</a>
+              </a-menu-item>
+            </a-menu>
+          </a-dropdown>
+        </template>
+      </public-tree>
       <a slot="name" slot-scope="scope">{{ scope.row.name }}</a>
     </public-table>
   </div>
 </template>
 
 <script>
+const treeMenuList = [
+  { name: "添加单位", key: "addUnit", permissionName: "添加单位" },
+  { name: "添加下级分组", key: "addSubGroup", permissionName: "新增分组" }
+];
 const treeData = [
   {
-    title: "parent 1",
+    title: "0-0",
     key: "0-0",
-    slots: {
-      icon: "smile"
-    },
     children: [
-      { title: "leaf", key: "0-0-0", slots: { icon: "meh" } },
-      { title: "leaf", key: "0-0-1", scopedSlots: { icon: "custom" } },
-      { title: "leaf", key: "0-0-2", scopedSlots: { icon: "custom" } },
-      { title: "leaf", key: "0-0-3", scopedSlots: { icon: "custom" } },
-      { title: "leaf", key: "0-0-4", scopedSlots: { icon: "custom" } },
-      { title: "leaf", key: "0-0-5", scopedSlots: { icon: "custom" } }
+      {
+        title: "0-0-0",
+        key: "0-0-0",
+        children: [
+          { title: "0-0-0-0", key: "0-0-0-0" },
+          { title: "0-0-0-1", key: "0-0-0-1" },
+          { title: "0-0-0-2", key: "0-0-0-2" }
+        ]
+      },
+      {
+        title: "0-0-1",
+        key: "0-0-1",
+        children: [
+          { title: "0-0-1-0", key: "0-0-1-0" },
+          { title: "0-0-1-1", key: "0-0-1-1" },
+          { title: "0-0-1-2", key: "0-0-1-2" }
+        ]
+      },
+      {
+        title: "0-0-2",
+        key: "0-0-2"
+      }
     ]
+  },
+  {
+    title: "0-1",
+    key: "0-1",
+    children: [
+      { title: "0-1-0-0", key: "0-1-0-0" },
+      { title: "0-1-0-1", key: "0-1-0-1" },
+      { title: "0-1-0-2", key: "0-1-0-2" }
+    ]
+  },
+  {
+    title: "0-2",
+    key: "0-2"
   }
 ];
+
 const columns = [
   {
     title: "Name",
@@ -171,6 +219,7 @@ export default {
         changePageIndex: this.changePageIndex,
         changePageSize: this.changePageSize
       },
+      treeMenuList,
       topBarsBtns: [
         {
           name: "新增",
@@ -221,6 +270,10 @@ export default {
     };
   },
   methods: {
+    // 树节点点击
+    handleTreeClick(item) {
+      console.log(item);
+    },
     // changePageIndex
     changePageIndex(page) {
       this.tableInfo.pageIndex = page;

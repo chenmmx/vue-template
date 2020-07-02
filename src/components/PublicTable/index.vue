@@ -11,6 +11,7 @@
         :lg="showTree ? 18 : 24"
         :xl="showTree ? 18 : 24"
       >
+        <slot name="top-bar"></slot>
         <a-table
           v-bind="$attrs"
           v-on="$listeners"
