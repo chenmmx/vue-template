@@ -2,7 +2,8 @@
   <div class="home">
     <a-button type="primary" @click="start">开始轨迹</a-button>
     <div class="map">
-      <Map ref="map" :dataSource="dataSource" :centerPoint="centerPoint"></Map>
+      <!-- <Map ref="map" :dataSource="dataSource" :centerPoint="centerPoint"></Map> -->
+      <PublicTree></PublicTree>
     </div>
   </div>
 </template>
@@ -67,7 +68,7 @@ export default {
   align-items: center;
   flex-direction: column;
   .map {
-    width: 100%;
+    width: 50%;
     height: 80vh;
   }
 }
