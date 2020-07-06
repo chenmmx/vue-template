@@ -1,7 +1,7 @@
 <template>
   <div class="nav-bar-container">
     <a-row :gutter="15">
-      <a-col :xs="15" :md="24" :lg="12" :xl="12">
+      <a-col :xs="15" :sm="15" :md="12" :lg="12" :xl="12">
         <div class="left-panel">
           <!-- <a-icon
           v-show="device === 'desktop'"
@@ -13,7 +13,7 @@
           <tags-view></tags-view>
         </div>
       </a-col>
-      <a-col :xs="9" :sm="24" :md="12" :lg="12" :xl="12">
+      <a-col :xs="9" :sm="9" :md="12" :lg="12" :xl="12">
         <div class="right-panel">
           <!-- <global-search
           v-show="device === 'desktop'"
@@ -31,11 +31,6 @@
           /> -->
           <a-dropdown>
             <span style="cursor:pointer;">
-              <!-- <img
-                size="large"
-                style="margin-right:10px;"
-                src="../../assets/header.jpeg"
-              ><img> -->
               <span class="header-name">glasssix</span>
               <img class="header-img" src="@/assets/header.jpeg" alt="" />
               <a-icon type="down" />

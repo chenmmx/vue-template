@@ -52,7 +52,10 @@
               v-for="item in 9"
               :key="item"
             >
-              <a-form-model-item :label="`Activity name${item}`" prop="name">
+              <a-form-model-item
+                :label="`Activity name${item * 99}`"
+                prop="name"
+              >
                 <a-input v-model="form.name" />
               </a-form-model-item>
             </a-col>

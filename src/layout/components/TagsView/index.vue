@@ -9,7 +9,7 @@
         :style="{ width: `calc(100vw - ${scrollWidth}px)` }"
       >
         <a-tag
-          style="margin-right:15px;"
+          style="margin-right:15px;box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);"
           :color="activeKey === item.key ? '#2C8CEC' : null"
           v-for="(item, idx) in tagsBar"
           :key="item.key"

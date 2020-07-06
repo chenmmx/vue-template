@@ -1,123 +1,148 @@
 <template>
   <div class="table">
-    <public-top-bar :topBarsBtns="topBarsBtns">
-      <template slot="advanced">
-        <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
-        <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
-      </template>
-      <template slot="panel-right">
-        <a-button type="primary" @click="handleShowTree">{{
-          btnName
-        }}</a-button>
-      </template>
-    </public-top-bar>
-    <a-row :gutter="15">
-      <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6" v-show="isShowTree">
-        <h3 style="height:53px;line-height:53px;">组织架构</h3>
-        <a-tree
-          :tree-data="treeData"
-          show-icon
-          default-expand-all
-          :default-selected-keys="['0-0-0']"
+    <public-header>缺勤记录</public-header>
+    <public-table
+      :columns="columns"
+      :data-source="data"
+      :operate="operate"
+      :tableInfo="tableInfo"
+      show-tree
+    >
+      <!-- Top Bar -->
+      <template slot="top-bar">
+        <public-top-bar
+          :topBarsBtns="topBarsBtns"
+          :search-list="searchList"
+          @search="handleSearch"
         >
-          <a-icon slot="switcherIcon" type="down" />
-          <a-icon slot="smile" type="smile-o" />
-          <a-icon slot="meh" type="smile-o" />
-          <template slot="custom" slot-scope="{ selected }">
-            <a-icon :type="selected ? 'frown' : 'frown-o'" />
+          <template slot="advanced">
+            <!-- <a-date-picker format="YYYY-MM-DD HH:mm:ss" /> -->
+            <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="8">
+              <p class="text">缺勤时间</p>
+              <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
+            </a-col>
+            <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="8">
+              <p class="text">缺勤时间</p>
+              <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
+            </a-col>
+            <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="8">
+              <p class="text">缺勤时间</p>
+              <a-date-picker format="YYYY-MM-DD HH:mm:ss" />
+            </a-col>
+            <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="8">
+              <p class="text">缺勤时间</p>
+              <a-select default-value="lucy">
+                <a-select-option value="jack">
+                  Jack
+                </a-select-option>
+                <a-select-option value="lucy">
+                  Lucy
+                </a-select-option>
+                <a-select-option value="disabled" disabled>
+                  Disabled
+                </a-select-option>
+                <a-select-option value="Yiminghe">
+                  yiminghe
+                </a-select-option>
+              </a-select>
+            </a-col>
           </template>
-        </a-tree>
-      </a-col>
-      <a-col
-        :xs="24"
-        :sm="24"
-        :md="24"
-        :lg="isShowTree ? 18 : 24"
-        :xl="isShowTree ? 18 : 24"
+        </public-top-bar>
+      </template>
+      <!-- Tree -->
+      <public-tree
+        :tree-data="treeData"
+        show-custom
+        @select="handleTreeClick"
+        checkable
       >
-        <a-table :columns="columns" :data-source="data" :scroll="{ x: 900 }">
-          <a slot="name" slot-scope="text">{{ text }}</a>
-          <span slot="customTitle"><a-icon type="smile-o" /> Name</span>
-          <span slot="tags" slot-scope="tags">
-            <a-tag
-              v-for="tag in tags"
-              :key="tag"
-              :color="
-                tag === 'loser'
-                  ? 'volcano'
-                  : tag.length > 5
-                  ? 'geekblue'
-                  : 'green'
-              "
-            >
-              {{ tag.toUpperCase() }}
-            </a-tag>
-          </span>
-          <span slot="action">
-            <a>编辑</a>
-            <a-divider type="vertical" />
-            <a>删除</a>
-            <a-divider type="vertical" />
-            <a class="ant-dropdown-link">更多<a-icon type="down" /> </a>
-          </span>
-        </a-table>
-      </a-col>
-    </a-row>
+        <template slot="custom">
+          <a-dropdown>
+            <a-icon type="dash" />
+            <a-menu slot="overlay">
+              <a-menu-item v-for="item in treeMenuList" :key="item.key">
+                <a href="javascript:;">{{ item.name }}</a>
+              </a-menu-item>
+            </a-menu>
+          </a-dropdown>
+        </template>
+      </public-tree>
+      <a slot="name" slot-scope="scope">{{ scope.row.name }}</a>
+    </public-table>
   </div>
 </template>
 
 <script>
+const treeMenuList = [
+  { name: "添加单位", key: "addUnit", permissionName: "添加单位" },
+  { name: "添加下级分组", key: "addSubGroup", permissionName: "新增分组" }
+];
 const treeData = [
   {
-    title: "parent 1",
+    title: "0-0",
     key: "0-0",
-    slots: {
-      icon: "smile"
-    },
     children: [
-      { title: "leaf", key: "0-0-0", slots: { icon: "meh" } },
-      { title: "leaf", key: "0-0-1", scopedSlots: { icon: "custom" } },
-      { title: "leaf", key: "0-0-2", scopedSlots: { icon: "custom" } },
-      { title: "leaf", key: "0-0-3", scopedSlots: { icon: "custom" } },
-      { title: "leaf", key: "0-0-4", scopedSlots: { icon: "custom" } },
-      { title: "leaf", key: "0-0-5", scopedSlots: { icon: "custom" } }
+      {
+        title: "0-0-0",
+        key: "0-0-0",
+        children: [
+          { title: "0-0-0-0", key: "0-0-0-0" },
+          { title: "0-0-0-1", key: "0-0-0-1" },
+          { title: "0-0-0-2", key: "0-0-0-2" }
+        ]
+      },
+      {
+        title: "0-0-1",
+        key: "0-0-1",
+        children: [
+          { title: "0-0-1-0", key: "0-0-1-0" },
+          { title: "0-0-1-1", key: "0-0-1-1" },
+          { title: "0-0-1-2", key: "0-0-1-2" }
+        ]
+      },
+      {
+        title: "0-0-2",
+        key: "0-0-2"
+      }
     ]
+  },
+  {
+    title: "0-1",
+    key: "0-1",
+    children: [
+      { title: "0-1-0-0", key: "0-1-0-0" },
+      { title: "0-1-0-1", key: "0-1-0-1" },
+      { title: "0-1-0-2", key: "0-1-0-2" }
+    ]
+  },
+  {
+    title: "0-2",
+    key: "0-2"
   }
 ];
+
 const columns = [
   {
+    title: "Name",
     dataIndex: "name",
-    key: "name",
     width: 120,
-    slots: { title: "customTitle" },
-    scopedSlots: { customRender: "name" }
+    custom: true
   },
   {
     title: "Age",
-    dataIndex: "age",
-    key: "age"
+    dataIndex: "age"
   },
   {
     title: "Gender",
-    dataIndex: "gender",
-    key: "gender"
+    dataIndex: "gender"
   },
   {
     title: "Address",
-    dataIndex: "address",
-    key: "address"
+    dataIndex: "address"
   },
   {
     title: "Tags",
-    key: "tags",
-    dataIndex: "tags",
-    scopedSlots: { customRender: "tags" }
-  },
-  {
-    title: "Action",
-    key: "action",
-    width: 200,
-    scopedSlots: { customRender: "action" }
+    dataIndex: "tags"
   }
 ];
 
@@ -212,6 +237,17 @@ export default {
       treeData,
       isShowTree: false,
       btnName: "展示树组件",
+      tableInfo: {
+        total: 0,
+        pageIndex: 1,
+        pageSize: 10,
+        selectRows: [],
+        selectRowsInfo: [],
+        pageSizeOptions: ["10", "20", "30", "40", "50", "100"],
+        changePageIndex: this.changePageIndex,
+        changePageSize: this.changePageSize
+      },
+      treeMenuList,
       topBarsBtns: [
         {
           name: "新增",
@@ -223,10 +259,61 @@ export default {
           type: "primary",
           click: this.edit
         }
+      ],
+      searchList: [
+        {
+          key: "name",
+          value: "学生姓名"
+        },
+        {
+          key: "number",
+          value: "学生学号"
+        }
+      ],
+      operate: [
+        {
+          name: "编辑",
+          fun: this.edit
+        },
+        {
+          name: "删除",
+          fun: ""
+        },
+        {
+          name: "更多",
+          dropdown: true,
+          fun: this.handleMore,
+          dropdownList: [
+            {
+              key: 1,
+              name: "麻花藤"
+            },
+            {
+              key: 2,
+              name: "马芸"
+            }
+          ]
+        }
       ]
     };
   },
   methods: {
+    // 树节点点击
+    handleTreeClick(item) {
+      console.log(item);
+    },
+    // changePageIndex
+    changePageIndex(page) {
+      this.tableInfo.pageIndex = page;
+      // this.getTableData(this.tableServices);
+    },
+
+    // changePageSize
+    changePageSize(current, pageSize) {
+      this.tableInfo.pageIndex = 1;
+      this.tableInfo.pageSize = pageSize;
+      // this.getTableData(this.tableServices);
+    },
     handleShowTree() {
       this.isShowTree = !this.isShowTree;
       this.btnName = this.isShowTree ? "隐藏树组件" : "展示树组件";
@@ -235,14 +322,21 @@ export default {
       console.log("add");
       this.$router.push("/table/form");
     },
-    edit() {
-      console.log("edit");
+    edit(item) {
+      console.log("edit", item);
     },
     onSelect(selectedKeys, info) {
       console.log("selected", selectedKeys, info);
     },
     onCheck(checkedKeys, info) {
       console.log("onCheck", checkedKeys, info);
+    },
+    handleMore(item, { key }) {
+      console.log(key);
+    },
+    // 搜索
+    handleSearch({ key, value }) {
+      console.log(key, value);
     }
   }
 };
