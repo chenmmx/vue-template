@@ -52,7 +52,7 @@
           </transition>
         </section>
         <a-layout-footer class="footer-copyright" style="textAlign: center">
-          Glasssix Web ©2020 Created by Glasssix Frontend Group
+          template Web ©2020 Created by chenmmx
         </a-layout-footer>
         <a-back-top :target="target" />
       </a-layout-content>
