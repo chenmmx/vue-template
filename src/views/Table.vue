@@ -6,7 +6,6 @@
       :data-source="data"
       :operate="operate"
       :tableInfo="tableInfo"
-      show-tree
     >
       <!-- Top Bar -->
       <template slot="top-bar">
@@ -50,7 +49,7 @@
         </public-top-bar>
       </template>
       <!-- Tree -->
-      <public-tree
+      <!-- <public-tree
         :tree-data="treeData"
         show-custom
         @select="handleTreeClick"
@@ -66,7 +65,7 @@
             </a-menu>
           </a-dropdown>
         </template>
-      </public-tree>
+      </public-tree> -->
       <a slot="name" slot-scope="scope">{{ scope.row.name }}</a>
     </public-table>
   </div>
