@@ -1,6 +1,6 @@
 <template>
   <div class="table">
-    <public-header>缺勤记录</public-header>
+    <public-header>test table</public-header>
     <public-table
       :columns="columns"
       :data-source="data"
