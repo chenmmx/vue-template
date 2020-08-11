@@ -1,6 +1,6 @@
 <template>
   <div class="table">
-    <public-header>你才是猪，哈哈哈！</public-header>
+    <public-header>你才是猪！</public-header>
     <public-table
       :columns="columns"
       :data-source="data"
