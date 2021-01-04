@@ -3,23 +3,23 @@
     <a-row :gutter="15">
       <a-col :xs="15" :sm="15" :md="12" :lg="12" :xl="12">
         <div class="left-panel">
-          <!-- <a-icon
-          v-show="device === 'desktop'"
-          @click="handleCollapse"
-          :type="collapse ? 'menu-unfold' : 'menu-fold'"
-          style="font-size:20px;font-weight:bold;margin-right:10px;cursor:pointer;"
-        />
-        <breadcrumb v-show="device === 'desktop'"></breadcrumb> -->
+          <a-icon
+            v-show="device === 'desktop'"
+            @click="handleCollapse"
+            :type="collapse ? 'menu-unfold' : 'menu-fold'"
+            style="font-size:20px;font-weight:bold;margin-right:10px;cursor:pointer;"
+          />
+          <!-- <breadcrumb v-show="device === 'desktop'"></breadcrumb> -->
           <tags-view></tags-view>
         </div>
       </a-col>
       <a-col :xs="9" :sm="9" :md="12" :lg="12" :xl="12">
         <div class="right-panel">
-          <!-- <global-search
-          v-show="device === 'desktop'"
-          style="margin-right:15px;"
-        ></global-search> -->
-          <!-- <full-screen
+          <global-search
+            v-show="device === 'desktop'"
+            style="margin-right:15px;"
+          ></global-search>
+          <full-screen
             style="margin-right:15px;"
             @reload="reload"
           ></full-screen>
@@ -28,7 +28,7 @@
             type="sync"
             :spin="spining"
             @click="reload"
-          /> -->
+          />
           <a-dropdown>
             <span style="cursor:pointer;">
               <span class="header-name">glasssix</span>
@@ -51,17 +51,17 @@
 </template>
 
 <script>
-// import GlobalSearch from "../GlobalSearch";
+import GlobalSearch from "../GlobalSearch";
 // import Breadcrumb from "../Breadcrumb";
 import TagsView from "../TagsView";
-// import FullScreen from "../FullScreen";
+import FullScreen from "../FullScreen";
 import { mapGetters } from "vuex";
 export default {
   name: "NavBar",
   components: {
-    // GlobalSearch,
+    GlobalSearch,
     // Breadcrumb,
-    // FullScreen,
+    FullScreen,
     TagsView
   },
   data() {
